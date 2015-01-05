@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">The Cool View Android Library</string>
+
+    
+    <string name="dialog_wait_message">A moment please...</string>
+</resources>
