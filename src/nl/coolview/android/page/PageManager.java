@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ViewFlipper;
@@ -48,6 +49,19 @@ public class PageManager extends ViewFlipper {
 			mActivity = (Activity) context;
 		}
 	}
+	
+	public PageManager(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		//setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+		setPersistentDrawingCache(ViewGroup.PERSISTENT_ANIMATION_CACHE | ViewGroup.PERSISTENT_SCROLLING_CACHE);
+		
+		if (context instanceof Activity) {
+			mActivity = (Activity) context;
+		}
+	}
+
+
+
 
 	@SuppressLint("NewApi")
 	public void animateNext() {

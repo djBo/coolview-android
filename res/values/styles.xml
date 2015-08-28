@@ -1,6 +1,13 @@
 <resources>
 
-    <style name="DefaultTheme" parent="@android:style/Theme.Black" />
-    <style name="LightTheme" parent="@android:style/Theme.Light" />
+    <style name="DefaultTheme" parent="@android:style/Theme.Black">
+        
+    </style>
+    
+    <style name="LightTheme" parent="@android:style/Theme.Light">
+        <!-- <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item> -->
+    </style>
+    
+    <style name="ApplicationTheme" parent="@android:style/Theme.Translucent.NoTitleBar" />
 	    
 </resources>

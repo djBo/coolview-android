@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -38,6 +39,8 @@ public class PageActivity extends Activity {
 
 	private PageManager pageManager;
 	
+	private Toolbar toolBar;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,21 +51,29 @@ public class PageActivity extends Activity {
 			setTheme(R.style.LightTheme);
 		} else if (theme.equals("default")) {
 			setTheme(R.style.DefaultTheme);
+		} else {
+			setTheme(android.R.style.Theme);
 		}
 		
 		// Instantiate self
 		super.onCreate(savedInstanceState);
 
 		// Enable the use of a rotating progress icon in the title bar
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		//requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		pageManager = new PageManager(this);
+		setContentView(R.layout.page_activity);
+		
+		toolBar = (Toolbar)findViewById(R.id.page_toolbar);
+		toolBar.setTitle("test");
+		
+		pageManager = new PageManager(this);//(PageManager)findViewById(R.id.page_manager);//
 		pageManager.setViews(views);
 		if (pageManager.getChildCount() > 0) {
 			setTitle(pageManager.getCurrentPage().getTitle());
 		}
 		views = null;
-		setContentView(pageManager);
+		//setContentView(pageManager);
 	}
 
 	@Override

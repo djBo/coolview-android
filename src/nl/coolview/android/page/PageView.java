@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import org.w3c.dom.Element;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
@@ -138,6 +139,13 @@ public abstract class PageView extends RelativeLayout implements OnItemClickList
 			setText(e.getMessage());
 		}
 		return this;
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -9,7 +9,7 @@ import android.view.View;
 
 /**
  * ProgressAsyncTask Class
- * 
+ *
  * <p>Copyright (c) Rory Slegtenhorst
  * <p>Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ import android.view.View;
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
+ *
  * @author Rory Slegtenhorst <rory.slegtenhorst@gmail.com>
  */
 public abstract class ProgressAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
@@ -79,6 +79,16 @@ public abstract class ProgressAsyncTask<Params, Progress, Result> extends AsyncT
 			}
 		}, 30000);
 	}
+
+	@Override
+	protected void onCancelled() {
+		if (progressView != null) {
+			progressView.setVisibility(View.GONE);
+		} else if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+		super.onCancelled();
+	};
 
 	@Override
 	protected void onPostExecute(Result result) {
